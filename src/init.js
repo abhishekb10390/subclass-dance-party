@@ -27,7 +27,35 @@ $(document).ready(function() {
       $('body').width() * Math.random(),
       Math.random() * 1000
     );
+    window.dancers.push(dancer.$node[0]);
     $('body').append(dancer.$node);
   });
+
+  $('.lineUp').on('click', function() {
+    for (var i = 0; i < window.dancers.length; i++) {
+      if ($(window.dancers[i]).hasClass('bob')) {
+        $(window.dancers[i]).animate({'left': '0'});
+      } else if ($(window.dancers[i]).hasClass('ghost')) {
+        $(window.dancers[i]).animate({'top': '0'});
+      } else {
+        $(window.dancers[i]).animate({'left': '100%'});
+      }
+    }
+  });
+  $(document).on('click', '.dancer', function() {
+    $(this).closest('.dancer').remove();
+  });
+
+  // $('.pairUp').on('click', function() {
+  //   for (var i = 0; i < window.dancers.length; i++) {
+  //     var iTop = $(window.dancers[i]).css('top');
+  //     var iLeft = $(window.dancers[i]).css('left');
+  //     var closestDist = Math.pow(iTop - )
+  //     for (var j = i+1; j < window.dancers.length; j++) {
+  //       var jTop = $(window.dancers[j]).css('top');
+  //       var jLeft = $(window.dancers[j]).css('left');
+  //     }
+  //   }
+  // });
 });
 
